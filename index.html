@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antara Banerjee — Robotics & Controls Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15171a;
+    --slate:#5c6470;
+    --line:#e3e4e2;
+    --paper:#f7f6f3;
+    --white:#ffffff;
+    --accent:#1f4a3f;
+    --accent-soft:#e8efe9;
+    --radius:4px;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Inter",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .mono{font-family:"JetBrains Mono",monospace}
+
+  /* nav */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,246,243,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em}
+  .nav ul{display:flex;gap:30px;list-style:none}
+  .nav ul a{font-size:.9rem;color:var(--slate);transition:color .2s}
+  .nav ul a:hover{color:var(--ink)}
+  .nav-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer}
+
+  /* hero */
+  .hero{padding:96px 0 88px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:center}
+  .portrait{
+    position:relative;border-radius:8px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:0 18px 48px -24px rgba(21,23,26,.4);
+    aspect-ratio:4/5;
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .eyebrow{
+    font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:28px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:32px;height:1px;background:var(--accent)}
+  .hero h1{
+    font-family:"Fraunces",serif;font-weight:500;
+    font-size:clamp(2.5rem,5.6vw,4.4rem);
+    line-height:1.05;letter-spacing:-.02em;max-width:16ch;
+  }
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero p{margin-top:30px;max-width:52ch;font-size:1.12rem;color:var(--slate)}
+  .cta-row{margin-top:42px;display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-block;font-size:.92rem;font-weight:500;padding:13px 26px;border-radius:var(--radius);transition:all .2s}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#163a31}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink)}
+
+  /* section shell */
+  section{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:48px}
+  .sec-num{font-family:"JetBrains Mono",monospace;font-size:.85rem;color:var(--accent);font-weight:500}
+  .sec-head h2{font-family:"Fraunces",serif;font-weight:500;font-size:2rem;letter-spacing:-.01em}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:64px}
+  .about-grid p{font-size:1.06rem;color:var(--slate);margin-bottom:18px}
+  .about-grid p strong{color:var(--ink);font-weight:600}
+  .facts{border-top:1px solid var(--line);align-self:start}
+  .fact{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+  .fact span:first-child{color:var(--slate)}
+  .fact span:last-child{font-weight:500;text-align:right}
+
+  /* skills */
+  .skills{border-top:1px solid var(--line)}
+  .skill-row{display:grid;grid-template-columns:1fr 2.4fr;gap:32px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .skill-row h4{font-family:"Fraunces",serif;font-weight:500;font-size:1.15rem}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.8rem;padding:6px 13px;background:var(--white);border:1px solid var(--line);border-radius:100px;color:var(--ink)}
+
+  /* experience timeline */
+  .exp{border-top:1px solid var(--line)}
+  .exp-item{display:grid;grid-template-columns:auto 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--line)}
+  .exp-date{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--slate);white-space:nowrap;padding-top:4px}
+  .exp-body h3{font-family:"Fraunces",serif;font-weight:500;font-size:1.3rem;margin-bottom:3px}
+  .exp-org{font-size:.95rem;color:var(--accent);font-weight:500;margin-bottom:14px}
+  .exp-body ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .exp-body li{position:relative;padding-left:20px;font-size:.97rem;color:var(--slate)}
+  .exp-body li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+  /* publications */
+  .pubs{border-top:1px solid var(--line)}
+  .pub{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
+  .pub-idx{font-family:"JetBrains Mono",monospace;color:var(--accent);font-size:.85rem}
+  .pub-main h3{font-family:"Fraunces",serif;font-weight:500;font-size:1.12rem;line-height:1.35;margin-bottom:6px}
+  .pub-venue{font-size:.88rem;color:var(--slate)}
+  .pub-link{font-size:.82rem;color:var(--accent);font-weight:500;white-space:nowrap}
+  .pub-link:hover{text-decoration:underline}
+
+  /* awards */
+  .awards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .award{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:26px}
+  .award h4{font-family:"Fraunces",serif;font-weight:500;font-size:1.1rem;margin-bottom:8px}
+  .award p{font-size:.92rem;color:var(--slate)}
+
+  /* contact */
+  .contact{background:var(--ink);color:#fff;border-radius:8px;padding:72px 56px;text-align:center}
+  .contact h2{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(2rem,4vw,2.8rem);letter-spacing:-.01em}
+  .contact p{color:#b4bac2;margin:18px auto 0;max-width:46ch}
+  .contact .btn-primary{margin-top:34px;background:#fff;color:var(--ink)}
+  .contact .btn-primary:hover{background:#e8efe9}
+  .socials{margin-top:32px;display:flex;gap:26px;justify-content:center;font-size:.9rem;flex-wrap:wrap}
+  .socials a{color:#b4bac2;transition:color .2s}
+  .socials a:hover{color:#fff}
+
+  footer{padding:40px 0;text-align:center;color:var(--slate);font-size:.85rem;border-top:1px solid var(--line)}
+
+  @media(max-width:760px){
+    .wrap{padding:0 22px}
+    .nav ul{
+      display:none;position:absolute;top:68px;left:0;right:0;
+      flex-direction:column;gap:0;background:var(--paper);
+      border-bottom:1px solid var(--line);padding:8px 22px 18px;
+    }
+    .nav ul.open{display:flex}
+    .nav ul li{padding:12px 0;border-bottom:1px solid var(--line)}
+    .nav-toggle{display:block}
+    .hero{padding:60px 0 56px}
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .portrait{max-width:300px;margin:0 auto}
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .skill-row{grid-template-columns:1fr;gap:14px}
+    .exp-item{grid-template-columns:1fr;gap:12px}
+    .pub{grid-template-columns:auto 1fr;gap:16px}
+    .pub-link{grid-column:2}
+    .awards-grid{grid-template-columns:1fr}
+    .contact{padding:52px 26px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Antara Banerjee</div>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <ul id="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Robotics &amp; Controls Researcher</div>
+          <h1>Designing control systems that <em>hold up</em> on real hardware.</h1>
+          <p>PhD researcher in Electrical &amp; Computer Engineering at the University of Washington, building ROS 2 simulation pipelines and compliant control algorithms — then validating them on real robotic manipulators.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#experience">View research</a>
+            <a class="btn btn-ghost" href="mailto:antara10@uw.edu">Get in touch</a>
+          </div>
+        </div>
+        <div class="portrait">
+          <img src="portrait.jpeg" alt="Antara Banerjee">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">01</span><h2>About</h2></div>
+      <div class="about-grid">
+        <div>
+          <p>I'm a graduate researcher in <strong>robotics and controls</strong>, focused on the gap between a controller that works in simulation and one that works on a physical robot. My current work centers on ROS 2–based simulation pipelines, controller design, and validating control algorithms on real systems.</p>
+          <p>At UW's Mechatronics, Automation &amp; Controls Lab, I develop <strong>admittance and compliant control</strong> for precision manufacturing tasks, integrating real-time perception so a manipulator can adapt its trajectory online. Before this, I completed an Integrated Dual Degree at IIT (BHU) Varanasi, graduating first in my department.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><span>Based in</span><span>Seattle, WA</span></div>
+          <div class="fact"><span>Program</span><span>PhD, ECE — UW</span></div>
+          <div class="fact"><span>Focus</span><span>Controls &amp; Robotics</span></div>
+          <div class="fact"><span>GPA</span><span>3.97 / 4.00</span></div>
+          <div class="fact"><span>Status</span><span>Researching</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Technical skills</h2></div>
+      <div class="skills">
+        <div class="skill-row">
+          <h4>Robotics &amp; Control</h4>
+          <div class="chips">
+            <span class="chip">Linear &amp; nonlinear control</span>
+            <span class="chip">Impedance / admittance control</span>
+            <span class="chip">Torque control</span>
+            <span class="chip">Rigid-body dynamics</span>
+            <span class="chip">Kinematics</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h4>Simulation &amp; Frameworks</h4>
+          <div class="chips">
+            <span class="chip">ROS 2</span>
+            <span class="chip">MATLAB</span>
+            <span class="chip">Simulink</span>
+            <span class="chip">Physics-based simulation</span>
+            <span class="chip">Sim-to-real transfer</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h4>Programming</h4>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">MATLAB</span>
+            <span class="chip">Bash</span>
+            <span class="chip">ROS 2 nodes</span>
+            <span class="chip">Linux</span>
+            <span class="chip">Git / GitHub</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <h4>Hardware &amp; Systems</h4>
+          <div class="chips">
+            <span class="chip">Real-time robotic control</span>
+            <span class="chip">Sensor integration</span>
+            <span class="chip">Depth-camera perception</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Research experience</h2></div>
+      <div class="exp">
+        <div class="exp-item">
+          <div class="exp-date">Jun 2025 —<br>Present</div>
+          <div class="exp-body">
+            <h3>Graduate Researcher</h3>
+            <div class="exp-org">Mechatronics, Automation &amp; Controls Lab — University of Washington</div>
+            <ul>
+              <li>Designed and implemented ROS 2–based simulation and control pipelines for controller design and validation on a UR5e industrial manipulator.</li>
+              <li>Built physics-consistent robot models capturing kinematics, dynamics, and end-effector behavior.</li>
+              <li>Developed admittance and compliant control algorithms for surface inspection in precision manufacturing.</li>
+              <li>Integrated real-time perception-control loops using Intel RealSense depth sensing to adapt trajectories online.</li>
+              <li>Supported controller testing on real hardware; findings are being prepared for publication.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">Jan 2022 —<br>May 2024</div>
+          <div class="exp-body">
+            <h3>Undergraduate Researcher</h3>
+            <div class="exp-org">Control System Laboratory — IIT (BHU) Varanasi</div>
+            <ul>
+              <li>Developed finite-time nonlinear control algorithms for robotic systems using MATLAB/Simulink and hardware experiments.</li>
+              <li>Built simulations to analyze stability, transient response, and robustness.</li>
+              <li>Designed control architectures for dynamically unstable systems, including mobile robots and inverted pendulum setups.</li>
+              <li>Established evaluation metrics to assess controller effectiveness; published at IEEE IECON 2024.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">May 2023 —<br>Jan 2024</div>
+          <div class="exp-body">
+            <h3>Research Intern</h3>
+            <div class="exp-org">Brain &amp; Cognitive Sciences — MIT</div>
+            <ul>
+              <li>Enhanced and fine-tuned computational locomotor-learning models in MATLAB.</li>
+              <li>Compared model outputs against experimental data to assess how healthy individuals learn under novel walking conditions.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">May 2022 —<br>Jul 2022</div>
+          <div class="exp-body">
+            <h3>Research Intern</h3>
+            <div class="exp-org">GIPSA-lab, CNRS — Université Grenoble Alpes</div>
+            <ul>
+              <li>Tested group machine-learning algorithms for Brain-Computer Interfaces (BCI) under Dr. Marco Congedo, Team ViBS.</li>
+              <li>Coded and validated new group-learning approaches on lab and public BCI datasets.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">04</span><h2>Publications</h2></div>
+      <div class="pubs">
+        <div class="pub">
+          <span class="pub-idx">[1]</span>
+          <div class="pub-main">
+            <h3>Finite-Time Trajectory Tracking for Wheeled Mobile Robot</h3>
+            <div class="pub-venue">A. Banerjee, et al. — IEEE IECON 2024</div>
+          </div>
+          <a class="pub-link" href="#">PDF →</a>
+        </div>
+        <div class="pub">
+          <span class="pub-idx">[2]</span>
+          <div class="pub-main">
+            <h3>Transfer Learning for P300 Brain-Computer Interfaces by Joint Alignment of Feature Vectors</h3>
+            <div class="pub-venue">F. Altindis, et al. — IEEE Journal of Biomedical and Health Informatics, 2023</div>
+          </div>
+          <a class="pub-link" href="#">PDF →</a>
+        </div>
+        <div class="pub">
+          <span class="pub-idx">[3]</span>
+          <div class="pub-main">
+            <h3>Rapid Control of Quantum Systems: A Continuous Nonsmooth Function Based Approach</h3>
+            <div class="pub-venue">E. Taslima, et al. — IEEE IECON 2024</div>
+          </div>
+          <a class="pub-link" href="#">PDF →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">05</span><h2>Awards &amp; scholarships</h2></div>
+      <div class="awards-grid">
+        <div class="award">
+          <h4>Khorana Program Scholar, 2023</h4>
+          <p>One of 75 selected across India for a research internship at MIT, USA.</p>
+        </div>
+        <div class="award">
+          <h4>Charpak Lab Scholar, 2022</h4>
+          <p>One of 30 selected across India for a research internship at Université Grenoble Alpes, France.</p>
+        </div>
+        <div class="award">
+          <h4>UW ECE WE25 Awardee</h4>
+          <p>Selected by UW ECE for support to attend the Society of Women Engineers WE25 Conference.</p>
+        </div>
+        <div class="award">
+          <h4>Department Rank 1 / 120+</h4>
+          <p>Graduated first in the department at IIT (BHU) Varanasi with a 9.8 / 10.0 GPA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <h2>Let's talk robotics.</h2>
+        <p>Open to research collaborations, conversations about controls and sim-to-real, and connecting with others in the field.</p>
+        <a class="btn btn-primary" href="mailto:antara10@uw.edu">antara10@uw.edu</a>
+        <div class="socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="tel:+12242607901">+1 224-260-7901</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Antara Banerjee — Seattle, WA</div>
+</footer>
+
+</body>
+</html>
