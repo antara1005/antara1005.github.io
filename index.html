@@ -111,6 +111,13 @@
   .fact span:first-child{color:var(--slate)}
   .fact span:last-child{font-weight:500;text-align:right}
 
+  /* news */
+  .news{border-top:1px solid var(--line)}
+  .news-item{display:grid;grid-template-columns:auto 1fr;gap:32px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .news-date{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--slate);white-space:nowrap}
+  .news-text{font-size:.97rem;color:var(--ink)}
+  .news-text strong{color:var(--accent);font-weight:600}
+
   /* skills */
   .skills{border-top:1px solid var(--line)}
   .skill-row{display:grid;grid-template-columns:1fr 2.4fr;gap:32px;padding:24px 0;border-bottom:1px solid var(--line)}
@@ -169,6 +176,7 @@
     .hero-grid{grid-template-columns:1fr;gap:36px}
     .portrait{max-width:300px;margin:0 auto}
     .about-grid{grid-template-columns:1fr;gap:40px}
+    .news-item{grid-template-columns:1fr;gap:8px}
     .skill-row{grid-template-columns:1fr;gap:14px}
     .exp-item{grid-template-columns:1fr;gap:12px}
     .pub{grid-template-columns:auto 1fr;gap:16px}
@@ -211,6 +219,7 @@
     <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
     <ul id="menu">
       <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#publications">Publications</a></li>
@@ -259,9 +268,29 @@
     </div>
   </section>
 
+  <section id="news">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">02</span><h2>News</h2></div>
+      <div class="news">
+        <div class="news-item">
+          <div class="news-date">2026</div>
+          <div class="news-text">Presented "Admittance-Based Surface Alignment for Human-in-the-Loop Robotic Visual Inspection" at the <strong>International Symposium on Flexible Automation (ISFA)</strong>, Okayama, Japan.</div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2026</div>
+          <div class="news-text">Received the <strong>Graduate Student Conference Presentation Award</strong> to attend ISFA 2026.</div>
+        </div>
+        <div class="news-item">
+          <div class="news-date">2025</div>
+          <div class="news-text">Received the <strong>UW ECE WE25 Award</strong> to attend the Society of Women Engineers WE25 Conference in New Orleans, LA.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="skills">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">02</span><h2>Technical skills</h2></div>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Technical skills</h2></div>
       <div class="skills">
         <div class="skill-row">
           <h4>Robotics &amp; Control</h4>
@@ -308,7 +337,7 @@
 
   <section id="experience">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">03</span><h2>Research experience</h2></div>
+      <div class="sec-head"><span class="sec-num">04</span><h2>Research experience</h2></div>
       <div class="exp">
         <div class="exp-item">
           <div class="exp-date">Jun 2025 —<br>Present</div>
@@ -365,7 +394,7 @@
 
   <section id="publications">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">04</span><h2>Publications</h2></div>
+      <div class="sec-head"><span class="sec-num">05</span><h2>Publications</h2></div>
       <div class="pubs">
         <div class="pub">
           <span class="pub-idx">[1]</span>
@@ -397,7 +426,7 @@
 
   <section id="awards">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">05</span><h2>Awards &amp; scholarships</h2></div>
+      <div class="sec-head"><span class="sec-num">06</span><h2>Awards &amp; scholarships</h2></div>
       <div class="awards-grid">
         <div class="award">
           <h4>Khorana Program Scholar, 2023</h4>
@@ -421,7 +450,7 @@
 
   <section id="misc">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">06</span><h2>Miscellaneous experiences</h2></div>
+      <div class="sec-head"><span class="sec-num">07</span><h2>Miscellaneous experiences</h2></div>
       <div class="exp">
         <div class="exp-item">
           <div class="exp-date">Sep 2025 —<br>Present</div>
